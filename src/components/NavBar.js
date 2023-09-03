@@ -1,14 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ThemeContext } from '../App';
 import {
     Link
 } from "react-router-dom";
 import "../App.css"
 
 const NavBar = (props) => {
-
+    const styles = useContext(ThemeContext)
     return (
         <div>
-            <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light" >
+            <nav className={`navbar fixed-top navbar-expand-lg navbar-${styles} bg-${styles}`}>
                 <div className="container-fluid">
                     <Link to='/general'>
                         <img src={process.env.REACT_APP_LOGO_IMAGE_PATH} className="rounded-pill mx-2" width="80" alt="Global News Logo" />
@@ -33,8 +34,8 @@ const NavBar = (props) => {
                             <button className="btn btn-outline-success" type="button">Search</button>
                         </form>
                         <div className="form-check form-switch mx-3">
-                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" />
-                            <label className="form-check-label" onClick={props.toggleTheme} htmlFor="flexSwitchCheckDefault" >Enable Dark Mode</label>
+                            <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.ToggleTheme} />
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ color: `${styles === "light" ? "black":"white"}`}} >{`Enable ${styles === "light" ? "Dark" : "Light"} Mode`}</label>
                         </div>
                     </div>
                 </div>

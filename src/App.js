@@ -5,31 +5,27 @@ import LoadingBar from 'react-top-loading-bar'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css"
 
-export const ThemeContext = createContext(null)
+export const ThemeContext = createContext()
 
 export default function App() {
-  const [themeMode, setThemeMode] = useState("dark");
+  const [themeMode, setThemeMode] = useState('light');
   const [progress, setProgress] = useState(0);
-
 
   const ToggleTheme = () => {
     setThemeMode((curr) => (curr === 'light' ? "dark" : "light"))
+
   }
-
   return (
-    <>
-      <ThemeContext.Provider value={themeMode}>
-
-        <Router>
-          <div style={{ paddingTop: "100px" }} id={themeMode}>
-            <NavBar ToggleTheme={ToggleTheme}  />
-            <LoadingBar
-              color='#f11946'
-              progress={progress}
-            />
-          </div>
+    <ThemeContext.Provider value={themeMode}>
+      <Router>
+        <div style={{ paddingTop: "100px", backgroundColor: `${themeMode === "light" ? "white" : "#2b0340"}` }}>
+          <NavBar ToggleTheme={ToggleTheme} />
+          <LoadingBar
+            color='#f11946'
+            progress={progress}
+          />
           <Routes>
-            <Route exact path='/general' element={<News  setProgress={setProgress} key="general" country='us' category='general' />} />
+            <Route exact path='/general' element={<News setProgress={setProgress} key="general" country='us' category='general' />} />
             <Route exact path='/' element={<News setProgress={setProgress} key='technology' country='us' category='general' />} />
             <Route exact path='/business' element={<News setProgress={setProgress} key="business" country='us' category='business' />} />
             <Route exact path='/entertainment' element={<News setProgress={setProgress} key="entertainment" country='us' category='entertainment' />} />
@@ -38,9 +34,8 @@ export default function App() {
             <Route exact path='/sports' element={<News setProgress={setProgress} key="sports" country='us' category='sports' />} />
             <Route exact path='/technology' element={<News setProgress={setProgress} key="technology" country='us' category='technology' />} />
           </Routes>
-        </Router>
-      </ThemeContext.Provider>
-    </>
+        </div>
+      </Router>
+    </ThemeContext.Provider >
   )
-
 }

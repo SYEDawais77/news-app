@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "../App.css"
+import { ThemeContext } from '../App'
 
 const NewItem = (props) => {
-
+    const styles = useContext(ThemeContext)
     let { title, description, imageUrl, url, author, dateTime, source } = props
     return (
-        <div className="card my-3 mx-auto" style={{ width: "300px", height: "500px", borderRadius: "15px" }}>
+        <div className="card my-3 mx-auto" style={{ backgroundColor: `${styles === "light" ? "white" : "black"}`, color: `${styles === "light" ? "black" : "white"}`, width: "300px", height: "500px", borderRadius: "15px", }}>
             <span className="position-absolute translate-middle badge rounded-pill bg-danger" style={{ left: "20%", height: "25px", textAlign: "center", position: "absolute" }}>{source}</span>
             <img src={imageUrl ? imageUrl : "https://img.freepik.com/free-vector/realistic-news-studio-background_23-2149985600.jpg?w=900&t=st=1690544161~exp=1690544761~hmac=00cb587fba1eafc980e8277fba119f4611386cfe365ed6fc1b606a27bc20fa52"} className="card-img-top" alt="" style={{ borderTopRightRadius: "15px", borderTopLeftRadius: "15px", height: "300px", width: "300px" }} />
             <div className="card-body text-center">

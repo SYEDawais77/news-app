@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import NewItem from './NewItem'
 import Spinner from './spinner';
 import PropTypes from 'prop-types'
 import "../App.css"
 import InfiniteScroll from "react-infinite-scroll-component";
+import { ThemeContext } from '../App';
 
-export default function News(props) {
+
+const News = (props) => {
+  const styles = useContext(ThemeContext)
   const Capitalize = (str) => {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
@@ -60,14 +63,14 @@ export default function News(props) {
   }
   return (
     <>
-      <h2 className="mb-3 mx-auto text-center">Global News - Top {Capitalize(props.category)} Headlines</h2>
+      <h1 className="text-center " style={{ backgroundColor: `${styles === "light" ? "white" : "#2b0340"}`, color: `${styles === "light" ? "black" : "white"}` }}>Global News - Top {Capitalize(props.category)} Headlines</h1>
       {loading && <Spinner />}
-      <InfiniteScroll
+      <InfiniteScroll style={{ backgroundColor: `${styles === "light" ? "white" : "#2b0340"}` }}
         dataLength={articles.length}
         hasMore={articles.length !== totalResult}
         next={fetchMoreData}
         loader={loading && <Spinner />}
-        endMessage={<h4 className='text-center my-4'>You catch all {Capitalize(props.category)} Headlines</h4>}
+        endMessage={<h4 style={{ color: `${styles === "light" ? "black" : "white"}` }} className='text-center my-4'>You catch all {Capitalize(props.category)} Headlines</h4>}
       >
         <div className="container">
           <div className="row mx-auto">
@@ -102,3 +105,5 @@ News.propTypes = {
   pageSize: PropTypes.number,
   category: PropTypes.string,
 }
+
+export default News
