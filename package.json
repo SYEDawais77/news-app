@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "case-sensitive-paths-webpack-plugin": "^2.4.0"
+    "case-sensitive-paths-webpack-plugin": "^2.4.0",
+    "style-loader": "^3.3.3"
   }
 }
