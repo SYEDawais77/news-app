@@ -7,6 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 export const ThemeContext = createContext()
 
 export default function App() {
+  
   const [themeMode, setThemeMode] = useState('light');
   const [progress, setProgress] = useState(0);
 
