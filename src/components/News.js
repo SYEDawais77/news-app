@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from 'react'
 import NewItem from './NewItem'
 import Spinner from './spinner';
 import PropTypes from 'prop-types'
-import "../App.css"
 import InfiniteScroll from "react-infinite-scroll-component";
 import { ThemeContext } from '../App';
 

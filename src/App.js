@@ -3,7 +3,6 @@ import NavBar from './components/NavBar';
 import News from './components/News';
 import LoadingBar from 'react-top-loading-bar'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css"
 
 export const ThemeContext = createContext()
 
