@@ -35,7 +35,7 @@ const NavBar = (props) => {
                         </form>
                         <div className="form-check form-switch mx-3">
                             <input className="form-check-input" type="checkbox" id="flexSwitchCheckDefault" onClick={props.ToggleTheme} />
-                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ color: `${styles === "light" ? "black":"white"}`}} >{`Enable ${styles === "light" ? "Dark" : "Light"} Mode`}</label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault" style={{ color: `${styles === "light" ? "black" : "white"}` }} >{`Enable ${styles === "light" ? "Dark" : "Light"} Mode`}</label>
                         </div>
                     </div>
                 </div>
